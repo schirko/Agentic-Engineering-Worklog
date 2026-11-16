@@ -25,8 +25,8 @@ The phrase covers two things, and this project does both:
 |---|---|---|
 | 1. One model call | Send a message from Python and get text back | Done |
 | 2. One tool | The model asks for a Python function; my code runs it | Done: 6 of 6 on the test set |
-| 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Next |
-| 4. Memory | The agent picks up where it left off | Planned |
+| 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Done: 6 of 6 on tools, answers and saves |
+| 4. Memory | The agent picks up where it left off | Next |
 | 5. A real job | The full work log agent | Planned |
 
 ## Setup
