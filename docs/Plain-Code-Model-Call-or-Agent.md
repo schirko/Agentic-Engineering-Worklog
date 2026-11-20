@@ -1,6 +1,6 @@
 # Plain Code, a Model Call, or an Agent?
 
-Notes for the agent lessons: how to decide how much AI a task needs. The core advice comes from the lesson material; the parts marked **Added** came from a discussion in the Cornerpost Watch project on 2026-11-10. The same notes live in `B:\_Dev\Python\Cornerpost-Watch\docs\Detection-and-AI-Approach.md`, where they sit next to how that site's detector works.
+Notes for the agent lessons: how to decide how much AI a task needs. The core advice comes from the lesson material; the parts marked **Added** came from a discussion in the Cornerpost Watch project on 2026-11-10. The same notes live in `B:\Development\Python\Cornerpost-Watch\docs\Detection-and-AI-Approach.md`, where they sit next to how that site's detector works.
 
 **The short version:** start with plain code and move up only when the problem forces you to. Most good products are mostly plain code, with a model call or a small agent in the places that need flexibility. Lesson 2 is level 2 (one model call inside plain code); lesson 3 turns the same task into level 3 (the loop).
 

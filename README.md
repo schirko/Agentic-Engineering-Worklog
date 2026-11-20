@@ -26,8 +26,8 @@ The phrase covers two things, and this project does both:
 | 1. One model call | Send a message from Python and get text back | Done |
 | 2. One tool | The model asks for a Python function; my code runs it | Done: 6 of 6 on the test set |
 | 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Done: 6 of 6 on tools, answers and saves |
-| 4. Memory | The agent picks up where it left off | Next |
-| 5. A real job | The full work log agent | Planned |
+| 4. Memory | Conversation memory and a tool for correcting the last entry | Done: 6 of 6 conversations with the log exactly right |
+| 5. A real job | The full work log agent, as a program run from the terminal | Next |
 
 ## Setup
 
@@ -44,6 +44,7 @@ ollama pull qwen3:8b
 
 ## Layout
 
-- `notebooks/`: one notebook per lesson, saved with its real output
+- `notebooks/`: one notebook per lesson, saved with its real output. Each step explains what we're looking for, the code line by line, how to read the result and what it means, and each lesson ends with a list of the terms it uses
+- `docs/DEVELOPMENT.md`: how the project is built and published, including which portfolio files it may write
 - `docs/Plain-Code-Model-Call-or-Agent.md`: how I decide whether a task needs plain code, one model call, or an agent
 - `data/`: the work log the agent writes (`work_log.jsonl`); kept out of Git because it is personal
