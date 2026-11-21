@@ -59,6 +59,6 @@ To add your own project names, edit `KNOWN_PROJECTS` in `worklog/config.py`.
 
 - `worklog/`: the agent as a package: `config.py` (settings), `tools.py` (save, search and correct), `agent.py` (the loop and the memory) and `__main__.py` (the terminal program)
 - `notebooks/`: one notebook per lesson, saved with its real output. Each step explains what we're looking for, the code line by line, how to read the result and what it means, and each lesson ends with a list of the terms it uses
-- `docs/DEVELOPMENT.md`: how the project is built and published, including which portfolio files it may write
+- `docs/DEVELOPMENT.md`: how the project is built, tested and published, including which portfolio files it may write, and a step-by-step build record for every lesson
 - `docs/Plain-Code-Model-Call-or-Agent.md`: how I decide whether a task needs plain code, one model call, or an agent
 - `data/`: the work log the agent writes (`work_log.jsonl`); kept out of Git because it is personal
