@@ -19,7 +19,7 @@ The phrase covers two things, and this project does both:
 1. **Engineering with agents:** using an AI coding agent to build software under that discipline.
 2. **Engineering agents:** building an agent itself (the model, its tools and its loop) and measuring whether it behaves. The lesson notebooks do this, scoring the agent on a test set at every step.
 
-## Status: in progress
+## Status: lessons done, presentation next
 
 | Lesson | What it adds | Status |
 |---|---|---|
@@ -27,7 +27,7 @@ The phrase covers two things, and this project does both:
 | 2. One tool | The model asks for a Python function; my code runs it | Done: 6 of 6 on the test set |
 | 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Done: 6 of 6 on tools, answers and saves |
 | 4. Memory | Conversation memory and a tool for correcting the last entry | Done: 6 of 6 conversations with the log exactly right |
-| 5. A real job | The agent moved into the `worklog` package and run as a terminal program; tests run with memory on and off | Built, waiting for its run |
+| 5. A real job | The agent moved into the `worklog` package and run as a terminal program; tests run with memory on and off | Done: 6 of 6 with memory, 2 of 6 without (4 tests really need memory) |
 
 ## Setup
 
