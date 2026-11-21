@@ -27,7 +27,7 @@ The phrase covers two things, and this project does both:
 | 2. One tool | The model asks for a Python function; my code runs it | Done: 6 of 6 on the test set |
 | 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Done: 6 of 6 on tools, answers and saves |
 | 4. Memory | Conversation memory and a tool for correcting the last entry | Done: 6 of 6 conversations with the log exactly right |
-| 5. A real job | The full work log agent, as a program run from the terminal | Next |
+| 5. A real job | The agent moved into the `worklog` package and run as a terminal program; tests run with memory on and off | Built, waiting for its run |
 
 ## Setup
 
@@ -42,8 +42,22 @@ pip install ollama jupyter
 ollama pull qwen3:8b
 ```
 
+## Using the agent
+
+From the project folder, with Ollama running:
+
+```powershell
+.venv\Scripts\activate
+python -m worklog
+```
+
+Type what you worked on ("Spent 2 hours on Herd Planner fixing the calving chart.") or ask about past work ("How many hours this week?"). Type `quit` to stop. `python -m worklog --help` lists the options, including `--once "message"` for one quick entry and `--quiet` to hide the tool steps.
+
+To add your own project names, edit `KNOWN_PROJECTS` in `worklog/config.py`.
+
 ## Layout
 
+- `worklog/`: the agent as a package: `config.py` (settings), `tools.py` (save, search and correct), `agent.py` (the loop and the memory) and `__main__.py` (the terminal program)
 - `notebooks/`: one notebook per lesson, saved with its real output. Each step explains what we're looking for, the code line by line, how to read the result and what it means, and each lesson ends with a list of the terms it uses
 - `docs/DEVELOPMENT.md`: how the project is built and published, including which portfolio files it may write
 - `docs/Plain-Code-Model-Call-or-Agent.md`: how I decide whether a task needs plain code, one model call, or an agent
