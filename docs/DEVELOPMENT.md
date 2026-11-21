@@ -138,6 +138,17 @@ What was done in each lesson, in order.
 7. **Wrote the explanations from the real run.** Results: 6 of 6 with memory, 2 of 6 without, 4 tests really need memory. Without memory, the model guessed Cornerpost Watch (first in the list) and filed "the company site" under Agentic Engineering Worklog, with no warning.
 8. **Published**: lesson 5 page, project page (stats, two new findings, lesson list, Limits, "What's next"), and a new card screenshot. New card text given to Scott.
 
-### Next: the presentation
+### Fix: lesson 1's speed figure
 
-Planned in `docs/PRESENTATION_PLAN.md` for Scott to review before it's built, following the meat-prices project's presentation.
+While gathering numbers for the presentation, lesson 1's saved output (17.5 tokens per second, 17.5 seconds, 28 tokens out) didn't match its explanation (20.0, 25.7, 25) or the project page (21). Those came from earlier runs. The explanation, the lesson 1 page, the project page tile and the README were corrected to the saved run, with a note that speed varies a little between runs. Lesson 4's mention of "20 tokens per second" was corrected too. Code cells and outputs were not changed.
+
+### The presentation
+
+1. **Planned** in `docs/PRESENTATION_PLAN.md`. Scott approved it: 10 to 15 slides, opening with the question.
+2. **Template:** copied from the meat-prices deck's exported file so all three portfolio decks match: Space Grotesk and Inter, dark `#1F1B18`, light `#FAF8F5` and `#F1ECE6`, small uppercase labels, 72 px headings, 100 px big numbers, cards, footer with source and slide number. Only the primary colour changes: green `#2E6A4C` (meat-prices is maroon).
+3. **Pictures:** `presentation/charts.py` draws the token chart and the cover's glowing line from lesson 4's saved numbers (573, 652, 741, 772, 931).
+4. **Built** as a Claude slide deck (Slides type), 15 slides with speaker notes: https://claude.ai/artifact/95VpP2jvpWi8REGDvNsqHP.
+5. **Checked:** every number against the saved runs, and every slide rendered and looked at. Two layout fixes came out of it (slide 12's table was too narrow and pushed text into the footer; slide 11's quotes were in all capitals).
+6. **Exported:** Scott reviewed it ("I love it!") and saved the PDF, PowerPoint and web page from the deck's Share › Export menu into `presentation/`, named to match the other projects. The image export saves only the slide that's open, so the 15 slide images were made from the PDF export instead (`pdftoppm`, 1920 × 1080, the same size as the Life Expectancy images) and zipped. The cover thumbnail is slide 1 at 800 × 450. A `noindex` tag was added to the web page's head, following the portfolio rule.
+7. **Checked the exports:** the PDF has 15 pages, the PowerPoint 15 slides with 15 sets of speaker notes, the web page 15 slides; all 15 slide images were looked at.
+8. **Published:** the files went to `scott/agentic-engineering-worklog/presentation/`, and the project page got a "The story, as a presentation" section copied from the meat-prices page (cover, "View the presentation", four download tiles with sizes), placed after "What I found", plus a "The presentation" button at the top. In dark mode the green turns light, so its buttons and badges use dark text there.

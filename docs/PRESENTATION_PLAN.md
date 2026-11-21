@@ -1,6 +1,6 @@
 # Presentation plan: Agentic Engineering Worklog
 
-**Status:** draft for Scott's review. Nothing is built until this plan is approved.
+**Status:** approved by Scott on November 20, 2026 (10 to 15 slides; open with the question; nothing to add). Built as a 15-slide Claude slide deck: https://claude.ai/artifact/95VpP2jvpWi8REGDvNsqHP. The final slide list is in "As built" below; the draft list is kept for the record.
 
 ## Purpose
 
@@ -52,6 +52,30 @@ Every number below comes from a saved notebook run. The lesson each one comes fr
 |---|---|---|
 | A1 | The test sets | One row per lesson: what was tested, how many cases, the score |
 | A2 | Limits | Six tests per lesson is small; an 8B model is slower and less capable than hosted models; results are from my PC, not a live demo |
+
+## As built (final, 15 slides)
+
+To fit Scott's 10 to 15 slides, lesson 1's two findings share one slide, and the two appendix slides became one.
+
+| # | Slide id | Headline | Type and background |
+|---|---|---|---|
+| 1 | cover | Can I build an AI agent from scratch, and prove it works? | Cover, dark, glowing line of lesson 4's token counts |
+| 2 | goal | Turn one plain-English sentence into a saved record. | Content, light |
+| 3 | agentic | AI does much of the work. A person decides what's built and proves it's right. | Cards and the four-step loop, light alternate |
+| 4 | setup | A free model on a home PC: no API bill, and nothing leaves the machine. | Big numbers (8B, 100%, 17.5, $0), light |
+| 5 | lesson1 | The model keeps nothing between calls, and invents what it doesn't know. | Two transcripts, dark |
+| 6 | tool | The model asks for a tool. My code runs it. | Flow diagram and big numbers (6 of 6, 9 → 9), light |
+| 7 | loop | Let it keep using tools until the job is done. That's an agent. | Steps and transcript, light alternate |
+| 8 | ladder | Most tasks don't need an agent. I climb only when the problem forces it. | Three cards as steps, light |
+| 9 | memory | Memory works, and every turn costs more to read. | Token chart and +62%, light alternate |
+| 10 | control | Same six tests, run twice: with memory, and with it switched off. | **Statement: 6 of 6, 2 of 6, 4**, green |
+| 11 | guesses | Without the information it needs, it guesses instead of asking. | Two cards, dark |
+| 12 | program | A program I run every day: python -m worklog | Package table and transcript, light |
+| 13 | learned | Five things I'd tell anyone building their first agent. | Numbered rows, light alternate |
+| 14 | next | From a learning project to tools I'll use every day. | Three cards, dark |
+| 15 | appendix | Measured at every step, with known right answers. | Table of test sets and limits, light alternate |
+
+Every slide has speaker notes. Number checks against the saved runs: 17.5 tokens per second and 5.9 GB at 100% on the GPUs (lesson 1); 6 of 6 and 9 → 9 (lesson 2); 6 of 6 and "2 hours" (lesson 3); 573 → 931 tokens, +62% (lesson 4: 931 ÷ 573 = 1.625); 6 of 6 with memory, 2 of 6 without, 4 hours total, 389 lines (lesson 5).
 
 ## Look: the same template as the other two decks
 
@@ -144,7 +168,7 @@ Lesson 1's saved output shows **17.5 tokens per second** and **17.5 seconds** in
 8. Scott commits and pushes; I give new card text if needed.
 9. The steps actually taken are added to the build record in `docs/DEVELOPMENT.md`.
 
-## Questions for Scott
+## Questions for Scott (answered)
 
 1. Is 15 slides (plus 2 appendix slides) and about 12 minutes the right length?
 2. Should slide 1 open with the question, as written, or with the result ("6 vs 2")?
