@@ -152,3 +152,13 @@ While gathering numbers for the presentation, lesson 1's saved output (17.5 toke
 6. **Exported:** Scott reviewed it ("I love it!") and saved the PDF, PowerPoint and web page from the deck's Share › Export menu into `presentation/`, named to match the other projects. The image export saves only the slide that's open, so the 15 slide images were made from the PDF export instead (`pdftoppm`, 1920 × 1080, the same size as the Life Expectancy images) and zipped. The cover thumbnail is slide 1 at 800 × 450. A `noindex` tag was added to the web page's head, following the portfolio rule.
 7. **Checked the exports:** the PDF has 15 pages, the PowerPoint 15 slides with 15 sets of speaker notes, the web page 15 slides; all 15 slide images were looked at.
 8. **Published:** the files went to `scott/agentic-engineering-worklog/presentation/`, and the project page got a "The story, as a presentation" section copied from the meat-prices page (cover, "View the presentation", four download tiles with sizes), placed after "What I found", plus a "The presentation" button at the top. In dark mode the green turns light, so its buttons and badges use dark text there.
+
+### Mapping the whole field (November 22, 2026)
+
+Scott asked for everything involved in agentic engineering to be outlined in the project, since it's the project's name.
+
+1. **Researched** the term's origin (Karpathy, February 2025 and 2026), the main definitions (Karpathy, Simon Willison, IBM, Google Research, Addy Osmani), the five stages (writing code → prompting → agents → harness → loops, with "loops" named in June 2026), the practices (context, tools, memory, guardrails, human in the loop, evals, observability, cost, security) and the working patterns for building with coding agents.
+2. **Wrote `docs/AGENTIC_ENGINEERING_MAP.md`:** every part explained in plain words, where the project covers it, the gaps, and sources.
+3. **Wrote `docs/ROADMAP.md`** for Scott's review: Parts 2 to 4 (lessons 6 to 10, and two real-life scenarios) to cover the gaps.
+4. **Added the five stages** to the project page (a "From writing code to loops" section with a table, and a button at the top), the README, and the presentation (slide 4, replacing the ladder slide, so the deck stays at 15 slides).
+5. **To do:** re-export the presentation, because the files on the portfolio still have the ladder slide.

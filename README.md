@@ -19,7 +19,21 @@ The phrase covers two things, and this project does both:
 1. **Engineering with agents:** using an AI coding agent to build software under that discipline.
 2. **Engineering agents:** building an agent itself (the model, its tools and its loop) and measuring whether it behaves. The lesson notebooks do this, scoring the agent on a test set at every step.
 
-## Status: lessons done, presentation next
+## From writing code to loops
+
+AI-assisted software has moved through five stages, each moving the developer one level further from typing code:
+
+| Stage | What the developer does | Where it is in this project |
+|---|---|---|
+| 1. Writing code | Types every line | The tools: saving, searching and correcting entries |
+| 2. Prompting | Asks a model for an answer, one request at a time | Lesson 1 |
+| 3. Agents | Gives the model tools and lets it take several steps | Lessons 2 and 3 |
+| 4. Harness | Builds everything around the model: instructions, tools, the loop, memory, limits | Lessons 4 and 5 (the `worklog` package) |
+| 5. Loops | Designs a system that prompts, checks and reruns the agent toward a goal | Planned: lessons 9 and 10 |
+
+`docs/AGENTIC_ENGINEERING_MAP.md` explains every part of agentic engineering (these stages plus context, tools, memory, guardrails, human approval, evals, tracing, cost and security) and where this project covers each one. `docs/ROADMAP.md` is the plan for covering the rest.
+
+## Status: Part 1 (lessons 1 to 5) and the presentation are done; the project is growing (see `docs/ROADMAP.md`)
 
 | Lesson | What it adds | Status |
 |---|---|---|
@@ -31,7 +45,7 @@ The phrase covers two things, and this project does both:
 
 ## Setup
 
-- Model: `qwen3:8b` through [Ollama](https://ollama.com), on two NVIDIA GTX 1060 6 GB cards (about 21 tokens per second)
+- Model: `qwen3:8b` through [Ollama](https://ollama.com), on two NVIDIA GTX 1060 6 GB cards (about 17.5 tokens per second in lesson 1's saved run)
 - Python package: `ollama`
 - Notebooks run in PyCharm: open one and run each cell in order with Shift + Enter
 
@@ -60,5 +74,9 @@ To add your own project names, edit `KNOWN_PROJECTS` in `worklog/config.py`.
 - `worklog/`: the agent as a package: `config.py` (settings), `tools.py` (save, search and correct), `agent.py` (the loop and the memory) and `__main__.py` (the terminal program)
 - `notebooks/`: one notebook per lesson, saved with its real output. Each step explains what we're looking for, the code line by line, how to read the result and what it means, and each lesson ends with a list of the terms it uses
 - `docs/DEVELOPMENT.md`: how the project is built, tested and published, including which portfolio files it may write, and a step-by-step build record for every lesson
+- `docs/AGENTIC_ENGINEERING_MAP.md`: every part of agentic engineering, and where this project covers it
+- `docs/ROADMAP.md`: how the project grows to cover the rest, including real-life use
+- `docs/PRESENTATION_PLAN.md`: the plan for the project's presentation, and the final slide list as built
+- `presentation/`: `charts.py`, which draws the presentation's chart and cover picture from saved lesson numbers, and the two pictures
 - `docs/Plain-Code-Model-Call-or-Agent.md`: how I decide whether a task needs plain code, one model call, or an agent
 - `data/`: the work log the agent writes (`work_log.jsonl`); kept out of Git because it is personal

@@ -53,20 +53,20 @@ Every number below comes from a saved notebook run. The lesson each one comes fr
 | A1 | The test sets | One row per lesson: what was tested, how many cases, the score |
 | A2 | Limits | Six tests per lesson is small; an 8B model is slower and less capable than hosted models; results are from my PC, not a live demo |
 
-## As built (final, 15 slides)
+## As built (15 slides; slide 4 changed November 22, 2026)
 
-To fit Scott's 10 to 15 slides, lesson 1's two findings share one slide, and the two appendix slides became one.
+To fit Scott's 10 to 15 slides, lesson 1's two findings share one slide, and the two appendix slides became one. On November 22 the ladder slide (plain code → one model call → an agent) was replaced by the five-stage slide (writing code → prompting → agents → harness → loops), because the ladder is the first three of those stages.
 
 | # | Slide id | Headline | Type and background |
 |---|---|---|---|
 | 1 | cover | Can I build an AI agent from scratch, and prove it works? | Cover, dark, glowing line of lesson 4's token counts |
 | 2 | goal | Turn one plain-English sentence into a saved record. | Content, light |
 | 3 | agentic | AI does much of the work. A person decides what's built and proves it's right. | Cards and the four-step loop, light alternate |
-| 4 | setup | A free model on a home PC: no API bill, and nothing leaves the machine. | Big numbers (8B, 100%, 17.5, $0), light |
-| 5 | lesson1 | The model keeps nothing between calls, and invents what it doesn't know. | Two transcripts, dark |
-| 6 | tool | The model asks for a tool. My code runs it. | Flow diagram and big numbers (6 of 6, 9 → 9), light |
-| 7 | loop | Let it keep using tools until the job is done. That's an agent. | Steps and transcript, light alternate |
-| 8 | ladder | Most tasks don't need an agent. I climb only when the problem forces it. | Three cards as steps, light |
+| 4 | stages | Five stages of AI-assisted software. This project climbs four, then the fifth. | Five cards as a staircase, light (added November 22; replaces the ladder slide) |
+| 5 | setup | A free model on a home PC: no API bill, and nothing leaves the machine. | Big numbers (8B, 100%, 17.5, $0), light |
+| 6 | lesson1 | The model keeps nothing between calls, and invents what it doesn't know. | Two transcripts, dark |
+| 7 | tool | The model asks for a tool. My code runs it. | Flow diagram and big numbers (6 of 6, 9 → 9), light |
+| 8 | loop | Let it keep using tools until the job is done. That's an agent. | Steps and transcript, light alternate |
 | 9 | memory | Memory works, and every turn costs more to read. | Token chart and +62%, light alternate |
 | 10 | control | Same six tests, run twice: with memory, and with it switched off. | **Statement: 6 of 6, 2 of 6, 4**, green |
 | 11 | guesses | Without the information it needs, it guesses instead of asking. | Two cards, dark |
