@@ -58,6 +58,32 @@ The word "loop" means two different things, and it's easy to mix them up:
 
 The stages describe where the field has gone, not a rule that every task should go to the top. Plain code is still the right answer when the rules can be written down, and an agent is only worth its cost when the next step depends on what the last one found (`docs/Plain-Code-Model-Call-or-Agent.md`).
 
+## The model, the tools and the harness
+
+Every agent, small or large, is made of the same parts. Claude Code's own documentation describes it this way: the agentic loop is powered by **models that reason** and **tools that act**, and Claude Code is the layer around the model that provides the tools and manages what the model sees. That surrounding layer is the **agentic harness**.
+
+### What a model is
+
+A **model** (a large language model) is the AI itself: a very large neural network trained on huge amounts of text and code. It reads the messages it's sent and writes a reply one token at a time. It keeps nothing between calls (lesson 1), so the harness decides what it sees each time. A **Claude model** is a model trained by Anthropic; qwen3:8b, used in this project, is a much smaller open model from Alibaba that runs on a home PC.
+
+Models come in sizes, with a trade-off between speed and cost on one side and capability on the other. Claude's family runs from Haiku (smallest and fastest) through Sonnet (the everyday workhorse) to Opus (the strongest reasoning). This project measured the same trade-off from the other end: a small local model is free and private, but slower and easier to fool.
+
+### This project's agent beside Claude Code
+
+| Part | The work log agent (this project) | Claude Code |
+|---|---|---|
+| **The model** (thinks and decides) | qwen3:8b, running on this PC | A Claude model, hosted by Anthropic |
+| **The tools** (act) | `add_entry`, `search_entries`, `update_last_entry` | Read and edit files, run commands, search the web, and more |
+| **The harness** (everything around the model) | The `worklog` package: instructions, tool list, the loop, memory, limits | Claude Code itself |
+| **The loop** | Ask the model, run its tools, send results back, at most 6 steps | Gather context → take action → verify results, repeated until done |
+| **Standing instructions** | The system prompt in `agent.py` | The system prompt plus the project's `CLAUDE.md` file |
+| **Memory** | The last 5 turns, plus the log file | The context window (summarised when it fills), plus saved memory files |
+| **Safety** | `MAX_STEPS`, a tool lookup table (more in lesson 7) | Permission modes, checkpoints that undo file edits |
+
+The shapes match because the design is the same; the difference is scale. That's the point of building a small one by hand: the professional tools stop being a black box.
+
+One difference worth noticing: Claude Code's safety features are enforced **in code**, not requested in the instructions. Lesson 6 shows why that matters.
+
 ## The practices
 
 These run through every stage. Each one says what it is, why it matters, and where this project stands.
@@ -189,6 +215,8 @@ The practices above are about building an agent. These are about using a coding 
 | Engineering *with* a coding agent | In `DEVELOPMENT.md` | Scenario B (case study) |
 
 ## Sources
+
+- Claude Code documentation, "How Claude Code works": https://code.claude.com/docs/en/how-claude-code-works
 
 - The New Stack, "Vibe coding is passé. Karpathy has a new name for the future of software" (February 10, 2026): https://thenewstack.io/vibe-coding-is-passe-karpathy-has-a-new-name-for-the-future-of-software/
 - Addy Osmani, "Agentic Engineering" (February 4, 2026): https://addyosmani.com/blog/agentic-engineering/

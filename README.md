@@ -31,6 +31,8 @@ AI-assisted software has moved through five stages, each moving the developer on
 | 4. Harness | Builds everything around the model: instructions, tools, the loop, memory, limits | Lessons 4 and 5 (the `worklog` package) |
 | 5. Loops | Designs a system that prompts, checks and reruns the agent toward a goal | Planned: lessons 9 and 10 |
 
+The `worklog` package is a small **harness**, the same design as professional coding agents such as Claude Code: a model that reasons, tools that act, and a layer around them that manages what the model sees.
+
 `docs/AGENTIC_ENGINEERING_MAP.md` explains every part of agentic engineering (these stages plus context, tools, memory, guardrails, human approval, evals, tracing, cost and security) and where this project covers each one. `docs/ROADMAP.md` is the plan for covering the rest.
 
 ## Status: Part 1 (lessons 1 to 5) and the presentation are done; the project is growing (see `docs/ROADMAP.md`)
@@ -42,6 +44,7 @@ AI-assisted software has moved through five stages, each moving the developer on
 | 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Done: 6 of 6 on tools, answers and saves |
 | 4. Memory | Conversation memory and a tool for correcting the last entry | Done: 6 of 6 conversations with the log exactly right |
 | 5. A real job | The agent moved into the `worklog` package and run as a terminal program; tests run with memory on and off | Done: 6 of 6 with memory, 2 of 6 without (4 tests really need memory) |
+| 6. Ask, don't guess | Context engineering: what the model sees, and an ask rule so it asks which project instead of guessing; tested with two controls | Built, waiting for its run |
 
 ## Setup
 

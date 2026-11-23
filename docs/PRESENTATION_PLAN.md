@@ -70,7 +70,7 @@ To fit Scott's 10 to 15 slides, lesson 1's two findings share one slide, and the
 | 9 | memory | Memory works, and every turn costs more to read. | Token chart and +62%, light alternate |
 | 10 | control | Same six tests, run twice: with memory, and with it switched off. | **Statement: 6 of 6, 2 of 6, 4**, green |
 | 11 | guesses | Without the information it needs, it guesses instead of asking. | Two cards, dark |
-| 12 | program | A program I run every day: python -m worklog | Package table and transcript, light |
+| 12 | program | A program I run every day: python -m worklog | Table of my agent beside Claude Code (model, tools, harness, loop) and transcript, light (table changed November 22; it was a list of file sizes) |
 | 13 | learned | Five things I'd tell anyone building their first agent. | Numbered rows, light alternate |
 | 14 | next | From a learning project to tools I'll use every day. | Three cards, dark |
 | 15 | appendix | Measured at every step, with known right answers. | Table of test sets and limits, light alternate |

@@ -162,3 +162,30 @@ Scott asked for everything involved in agentic engineering to be outlined in the
 3. **Wrote `docs/ROADMAP.md`** for Scott's review: Parts 2 to 4 (lessons 6 to 10, and two real-life scenarios) to cover the gaps.
 4. **Added the five stages** to the project page (a "From writing code to loops" section with a table, and a button at the top), the README, and the presentation (slide 4, replacing the ladder slide, so the deck stays at 15 slides).
 5. **To do:** re-export the presentation, because the files on the portfolio still have the ladder slide.
+
+### Lesson 6: Ask, don't guess
+
+1. **Decided with Scott:** lessons 6 to 10 in order; a second model as grader in lesson 8; Scenario B on Herd Planner.
+2. **Changed the package:**
+   - `config.ASK_WHEN_UNCLEAR = True`
+   - an `ASK_RULE` instruction in `agent.py`, added by `build_system_prompt(ask_when_unclear=...)`
+   - a matching `Conversation(ask_when_unclear=...)` option, so a test can switch the rule off as a control
+   - the terminal program uses the rule from now on
+   - lesson 5's saved run was made before the rule existed, so rerunning lesson 5 now would use it
+3. **Wrote the notebook:**
+   - the exact context the model is sent
+   - the rule and its size
+   - a worked example
+   - nine test conversations run three ways: the rule off (control 1), the rule on, and the rule on without memory (control 2), counting passes, wrong saves and needless questions
+   - the token cost of the rule
+4. **Tested against the stand-in model.** It ran end to end, and the terminal program asked "Which project was that for?" for an unclear message. Three expected figures were corrected before handing over: the instructions are about 900 characters, the rule adds about 240, and setting A should score about 6 of 9.
+
+### Model, tools, harness: the comparison with Claude Code (November 22, 2026)
+
+Scott asked what a "Claude model" is while reading Claude Code's documentation ("How Claude Code works"). The answer turned out to describe this project too, so it was documented:
+
+1. **Map:** a new section, "The model, the tools and the harness": what a model is, how model sizes trade speed for capability, and a part-by-part table of this agent beside Claude Code, with the documentation page as the source.
+2. **Lesson 5 notebook and page:** a new section naming the `worklog` package as a harness, with the comparison table and two new glossary rows (Model, Harness). Code cells and saved outputs unchanged; the section is dated.
+3. **Project page:** the comparison table, under "From writing code to loops".
+4. **Presentation:** slide 12's table of file sizes was replaced by the comparison table (the deck stays at 15 slides).
+5. **README:** one paragraph naming the package as a harness.

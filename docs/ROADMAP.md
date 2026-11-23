@@ -1,6 +1,6 @@
 # Roadmap: growing the project to cover all of agentic engineering
 
-**Status:** proposal for Scott's review, November 22, 2026. Nothing here is built until it's approved.
+**Status:** approved by Scott on November 22, 2026: lessons 6 to 10 in order; lesson 8 includes a second model as a grader; Scenario B is a Herd Planner feature. Lesson 6 is built.
 
 ## Why the project is growing
 
@@ -53,7 +53,7 @@ Every new lesson keeps the same standard as lessons 1 to 5: the full explanation
   - **trajectory checks:** were the right tools called, in the right order?
   - **a saved trace** of every run, as one line per step in a file: the message, tool calls, results, time and tokens
   - **a simple report:** pass rate, average time and tokens per case
-  - **an LLM-as-judge, optional:** the model grades reply quality where there's no single right answer, checked against Scott's own grades on a sample
+  - **a second model as a grader (LLM-as-judge):** it grades reply quality where there's no single right answer, checked against Scott's own grades on a sample
 - **Covers:** evals, observability, cost and speed.
 
 ## Part 3: Close the loop
@@ -138,8 +138,8 @@ Lessons 1 to 10 are engineering *an* agent. Part 4 is engineering *with* agents,
 - **The presentation:** a slide for the five stages (added now). After Part 3, two or three slides for the new findings, still within 15 slides by merging, then a fresh export.
 - **The status:** stays "In progress" until Part 4 is done.
 
-## Questions for Scott
+## Decisions (November 22, 2026)
 
-1. Is this order right: lessons 6 to 10, with Scenario A running in the background from lesson 7?
-2. For Scenario B, Herd Planner or Cornerpost Watch?
-3. Is the optional LLM-as-judge in lesson 8 worth including, or keep evals to known answers?
+1. Order: lessons 6 to 10, as written.
+2. Scenario B: a Herd Planner feature (plain-language herd records).
+3. Lesson 8: include a second model as a grader, checked against Scott's own grades.
