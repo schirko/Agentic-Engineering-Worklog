@@ -1,6 +1,6 @@
 # Roadmap: growing the project to cover all of agentic engineering
 
-**Status:** approved by Scott on November 22, 2026: lessons 6 to 10 in order; lesson 8 includes a second model as a grader; Scenario B is a Herd Planner feature. Lesson 6 is built.
+**Status:** approved by Scott on November 22, 2026: lessons 6 to 10 in order; lesson 8 includes a second model as a grader; Scenario B is a Herd Planner feature. Lesson 6 is done; lesson 7 is built and waiting for its run.
 
 ## Why the project is growing
 

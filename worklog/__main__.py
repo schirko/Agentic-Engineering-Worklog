@@ -8,6 +8,8 @@ Options:
     --once "message"   handle one message and exit, instead of chatting
     --log PATH         use a different log file, such as a demo log
     --quiet            hide the tool steps and show only the replies
+
+Before the agent changes a saved entry, it shows the change and asks "yes/no" (lesson 7).
 """
 
 import argparse

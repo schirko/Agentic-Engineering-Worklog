@@ -45,6 +45,7 @@ The `worklog` package is a small **harness**, the same design as professional co
 | 4. Memory | Conversation memory and a tool for correcting the last entry | Done: 6 of 6 conversations with the log exactly right |
 | 5. A real job | The agent moved into the `worklog` package and run as a terminal program; tests run with memory on and off | Done: 6 of 6 with memory, 2 of 6 without (4 tests really need memory) |
 | 6. Ask, don't guess | Context engineering: what the model sees. An instruction to ask instead of guessing, then a check in code that refuses to save under a project the user never named | Done: the instruction was ignored (0 questions in 27 runs); with the check, 9 of 9 and 0 wrong saves |
+| 7. Guardrails, approval and security | Checks in code (known projects, sensible hours), your "yes" before any change, and a prompt-injection demonstration, tested with controls | Built, waiting for its run |
 
 ## Setup
 

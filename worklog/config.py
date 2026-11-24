@@ -38,3 +38,14 @@ ASK_WHEN_UNCLEAR = True
 # code: a new entry is only saved if the user named its project somewhere in the
 # conversation. Otherwise the save is refused and the model is told to ask.
 REQUIRE_NAMED_PROJECT = True
+
+# Guardrails (lesson 7): checks in code that run before a tool does, whatever the model decides.
+# - a project must be one of KNOWN_PROJECTS (add new projects above first)
+# - hours, when given, must be more than 0 and at most MAX_HOURS
+# - text returned by tools is marked as data, so instructions hidden in saved entries
+#   are less likely to be followed (prompt injection)
+GUARDRAILS = True
+MAX_HOURS = 24
+
+# Ask the person before changing a saved entry (lesson 7). The terminal program asks "yes/no".
+REQUIRE_APPROVAL = True

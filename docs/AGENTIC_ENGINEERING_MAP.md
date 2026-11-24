@@ -122,13 +122,13 @@ Short-term memory is the recent conversation, sent again with each call. Long-te
 
 Limits enforced **in code**, not just asked for in the prompt: which tools the agent may use, checks on arguments, a cap on steps, and a person's approval before anything risky or hard to undo.
 
-**In this project:** `MAX_STEPS`, the tool lookup table, demo logs for tests, and lesson 6's named-project check, the first rule moved from the instructions into code after the instruction failed. **Gap:** no check that a project is on the known list or that hours are sensible, and the agent can change entries without confirmation (planned: lesson 7).
+**In this project:** `MAX_STEPS`, the tool lookup table, demo logs for tests, lesson 6's named-project check (the first rule moved from the instructions into code after the instruction failed), and lesson 7's guardrails: a project must be on the known list, and hours must be more than 0 and at most 24. Lesson 7 also tests the checks on their own, with no model (a unit test).
 
 ### 7. Human in the loop
 
 Deciding which actions the agent may take alone and which need a person: approval before changes, a person reviewing results, and the agent handing back when it's unsure.
 
-**In this project:** Scott reviews every lesson's results. **Gap:** the agent itself never stops to ask (planned: lessons 6 and 7).
+**In this project:** Scott reviews every lesson's results. Since lesson 6, a refused save makes the agent ask which project. Since lesson 7, changing a saved entry needs the person's "yes".
 
 ### 8. Evals: measuring whether it works
 
@@ -158,7 +158,7 @@ Every call costs time, and with hosted models, money. Memory, retries and long l
 
 An agent that reads text from outside (emails, web pages, files) can be tricked by instructions hidden in that text (**prompt injection**). Defences are least privilege (only the tools it needs), treating outside text as data, and approval for risky actions.
 
-**In this project:** the agent only reads what Scott types and its own log, and its tools can only touch the log file. **Gap:** not discussed or tested (planned: lesson 7).
+**In this project:** the agent only reads what Scott types and its own log, and its tools can only touch the log file. Lesson 7 shows prompt injection with a poisoned log entry, and defends in depth: tool results are marked as data, actions are checked in code, and changes need approval.
 
 ### 12. Loop engineering: the building blocks
 
@@ -206,12 +206,12 @@ The practices above are about building an agent. These are about using a coding 
 | Context engineering | Lesson 6 | |
 | Tool design | ✓ | Lesson 7 (validation) |
 | Memory and state | ✓ | |
-| Guardrails and permissions | Partly (lesson 6's check) | Lesson 7 |
-| Human in the loop | Partly | Lessons 6 and 7 |
+| Guardrails and permissions | Lessons 6 and 7 | |
+| Human in the loop | Lessons 6 and 7 | |
 | Evals | Partly | Lesson 8 |
 | Observability | Partly | Lesson 8 |
 | Cost and speed | ✓ | |
-| Security | | Lesson 7 |
+| Security | Lesson 7 | |
 | Engineering *with* a coding agent | In `DEVELOPMENT.md` | Scenario B (case study) |
 
 ## Sources
