@@ -189,3 +189,34 @@ Scott asked what a "Claude model" is while reading Claude Code's documentation (
 3. **Project page:** the comparison table, under "From writing code to loops".
 4. **Presentation:** slide 12's table of file sizes was replaced by the comparison table (the deck stays at 15 slides).
 5. **README:** one paragraph naming the package as a harness.
+
+### Lesson 6, first run: the instruction failed (November 22, 2026)
+
+Scott ran lesson 6 as first built (ask rule only). Results, from the saved notebook:
+
+| Setting | Passed | Wrong saves | Questions asked |
+|---|---|---|---|
+| A. Rule off, memory on | 4 of 9 | 5 | 0 |
+| B. Rule on, memory on | 5 of 9 | 4 | 0 |
+| C. Rule on, memory off | 3 of 9 | 6 | 0 |
+
+- The model **never asked a question** in 27 runs. Step 4's example saved "the company site" under Agentic Engineering Worklog with the rule on.
+- The rule added 56 tokens per call (576 → 632, +10%).
+- The stand-in model used for testing had followed the rule, because it was written to. This is why numbers from a stand-in run are never published: it tests that the code runs, not how the real model behaves.
+- This first run is kept in Git history (the commit "Document model, tools and harness; compare with Claude Code; lesson 6 run").
+
+### Lesson 6, revised: the check in code (November 23, 2026)
+
+1. **Package:**
+   - `config.REQUIRE_NAMED_PROJECT = True`
+   - in `agent.py`, `project_was_named()` and `Conversation.check_call()`, which run before every tool and refuse `add_entry` unless the user named the project in the remembered conversation
+   - the refusal (`NOT_NAMED`) is sent back to the model as the tool's result and tells it to ask
+   - `Conversation(require_named_project=...)` switches the check off for controls, and `blocked_calls` counts refusals
+   - the terminal program uses the check from now on
+2. **Notebook:**
+   - Steps 4 to 6 were rewritten from the first run's real results (the rule failed)
+   - new Step 7 shows the check's code and repeats the example with the check on
+   - new Step 8 reruns the nine conversations with the check on, with and without memory (settings D and E), beside setting B
+   - the closing sections were rewritten: "an instruction is a request, not a guarantee; put the rules that matter in code"
+3. **Stand-in model** changed to ignore the rule, like the real one, and to ask when a save is refused. Against it, D and E scored 9 of 9 with 0 wrong saves. These numbers are not published; Scott's rerun decides.
+4. **Next:** Scott reruns the whole notebook (Run All). Then Steps 7 and 8 are explained from the saved output, and Steps 4 to 6 are checked against it (temperature 0 should repeat the first run closely, but not necessarily exactly).

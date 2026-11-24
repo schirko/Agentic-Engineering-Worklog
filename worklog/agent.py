@@ -8,13 +8,23 @@ from . import config
 from .tools import TOOLS, run_tool
 
 
-def build_system_prompt(today=None):
+ASK_RULE = (
+    "If it isn't clear which known project the work was for, from the message or the conversation so far, "
+    "do not guess and do not call add_entry: ask the user which project it was, then wait for the answer. "
+    "If the project is clear, don't ask. "
+)
+
+
+def build_system_prompt(today=None, ask_when_unclear=None):
     """The standing instructions, with today's date filled in.
 
     The date is worked out each time a conversation starts, so a program left running
-    past midnight still knows what "today" means.
+    past midnight still knows what "today" means. The ask rule (lesson 6) is added
+    when ask_when_unclear is on, which it is by default (config.ASK_WHEN_UNCLEAR).
     """
     today = today or date.today()
+    if ask_when_unclear is None:
+        ask_when_unclear = config.ASK_WHEN_UNCLEAR
     return (
         "You are a work log assistant. "
         f"Today is {today.isoformat()} ({today.strftime('%A')}). "
@@ -24,9 +34,26 @@ def build_system_prompt(today=None):
         "If the user corrects something they just logged, call update_last_entry instead of add_entry. "
         "Known projects: " + ", ".join(config.KNOWN_PROJECTS) + ". "
         "Use one of those names when the work matches one. "
-        "Only include hours if the user stated them. Convert minutes to hours. "
+        + (ASK_RULE if ask_when_unclear else "")
+        + "Only include hours if the user stated them. Convert minutes to hours. "
         "If the message is not about work, answer normally without calling a tool."
     )
+
+
+NOT_NAMED = (
+    "Not saved: the user hasn't said which project this work was for. "
+    "Ask the user which project it was, then wait for the answer."
+)
+
+
+def project_was_named(project, user_texts):
+    """True if the project's name appears in anything the user said (lesson 6).
+
+    This is a check in code, not an instruction: the model can't talk its way past it.
+    It only checks that the name was said, not that it was said about this work.
+    """
+    said = " ".join(user_texts).lower()
+    return bool(project) and project.lower() in said
 
 
 def call_model(messages):
@@ -48,10 +75,14 @@ class Conversation:
     agent doesn't slow down as the conversation grows.
     """
 
-    def __init__(self, max_turns=None, verbose=False):
+    def __init__(self, max_turns=None, verbose=False, ask_when_unclear=None, require_named_project=None):
         self.max_turns = config.MAX_TURNS if max_turns is None else max_turns
+        self.require_named_project = (
+            config.REQUIRE_NAMED_PROJECT if require_named_project is None else require_named_project
+        )
+        self.blocked_calls = 0  # saves refused by the named-project check
         self.verbose = verbose
-        self.system_prompt = build_system_prompt()
+        self.system_prompt = build_system_prompt(ask_when_unclear=ask_when_unclear)
         self.turns = []
         self.prompt_tokens = []  # tokens the model read on each turn's first call
 
@@ -59,6 +90,15 @@ class Conversation:
         """The messages from the last max_turns turns, as one flat list."""
         kept = self.turns[-self.max_turns:] if self.max_turns > 0 else []
         return [message for turn in kept for message in turn]
+
+    def check_call(self, name, arguments, turn):
+        """Checks in code before a tool runs. Returns a refusal message, or None to go ahead."""
+        if self.require_named_project and name == "add_entry":
+            said = [m["content"] for m in self.recent_messages() + turn
+                    if isinstance(m, dict) and m.get("role") == "user"]
+            if not project_was_named(arguments.get("project"), said):
+                return NOT_NAMED
+        return None
 
     def send(self, user_text):
         """Handle one message. Returns the reply and a list of (tool name, arguments) used."""
@@ -80,7 +120,10 @@ class Conversation:
             turn.append(response.message)
             for call in tool_calls:
                 name, arguments = call.function.name, dict(call.function.arguments)
-                result = run_tool(name, arguments)
+                refusal = self.check_call(name, arguments, turn)
+                if refusal:
+                    self.blocked_calls += 1
+                result = refusal or run_tool(name, arguments)
                 calls_made.append((name, arguments))
                 if self.verbose:
                     print(f"  [step {step}] {name}({arguments}) -> {result.splitlines()[0]}")

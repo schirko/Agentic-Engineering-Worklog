@@ -104,7 +104,7 @@ The system prompt: the agent's role, rules and decision rules (for example, "if 
 
 Choosing what information goes into the model's limited working memory on each call: instructions, tool descriptions, conversation history, retrieved records. Too little and it guesses; too much and it's slow, costly and distracted.
 
-**In this project:** lesson 4 measured the cost (573 → 931 tokens over five turns) and limited memory to five turns. Lesson 5 showed the agent guesses when the context lacks what it needs. **Gap:** the agent never *asks* for missing information, and it doesn't fetch only the relevant records (planned: lesson 6).
+**In this project:** lesson 4 measured the cost (573 → 931 tokens over five turns) and limited memory to five turns. Lesson 5 showed the agent guesses when the context lacks what it needs. Lesson 6 showed exactly what the model is sent, then tested an instruction to ask instead of guessing: the model ignored it (0 questions in 27 runs). A check in code that refuses an unnamed project, and tells the model to ask, was added instead. **Gap:** search results aren't yet limited to the relevant records.
 
 ### 4. Tool design
 
@@ -122,7 +122,7 @@ Short-term memory is the recent conversation, sent again with each call. Long-te
 
 Limits enforced **in code**, not just asked for in the prompt: which tools the agent may use, checks on arguments, a cap on steps, and a person's approval before anything risky or hard to undo.
 
-**In this project:** `MAX_STEPS`, the tool lookup table and demo logs for tests. **Gap:** nothing stops a wrong project name being saved, and the agent can change entries without confirmation (planned: lesson 7).
+**In this project:** `MAX_STEPS`, the tool lookup table, demo logs for tests, and lesson 6's named-project check, the first rule moved from the instructions into code after the instruction failed. **Gap:** no check that a project is on the known list or that hours are sensible, and the agent can change entries without confirmation (planned: lesson 7).
 
 ### 7. Human in the loop
 
@@ -203,10 +203,10 @@ The practices above are about building an agent. These are about using a coding 
 | Loops | | Lessons 9 and 10 |
 | Specification | Partly | Real-life scenario |
 | Prompt engineering | ✓ | |
-| Context engineering | Partly | Lesson 6 |
+| Context engineering | Lesson 6 | |
 | Tool design | ✓ | Lesson 7 (validation) |
 | Memory and state | ✓ | |
-| Guardrails and permissions | Partly | Lesson 7 |
+| Guardrails and permissions | Partly (lesson 6's check) | Lesson 7 |
 | Human in the loop | Partly | Lessons 6 and 7 |
 | Evals | Partly | Lesson 8 |
 | Observability | Partly | Lesson 8 |

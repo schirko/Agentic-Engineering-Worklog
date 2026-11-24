@@ -29,3 +29,12 @@ MAX_STEPS = 6
 
 # How many earlier turns of the conversation the agent remembers (lesson 4).
 MAX_TURNS = 5
+
+# Ask which project when a message doesn't make it clear, instead of guessing (lesson 6).
+# Lesson 5 showed that without this the agent guesses, and the guess gets saved.
+ASK_WHEN_UNCLEAR = True
+
+# Lesson 6's first run showed the model ignores the ask rule, so this check enforces it in
+# code: a new entry is only saved if the user named its project somewhere in the
+# conversation. Otherwise the save is refused and the model is told to ask.
+REQUIRE_NAMED_PROJECT = True
