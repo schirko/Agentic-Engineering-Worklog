@@ -44,7 +44,7 @@ The `worklog` package is a small **harness**, the same design as professional co
 | 3. The loop | The model keeps calling tools until the job is done (the point it becomes an agent) | Done: 6 of 6 on tools, answers and saves |
 | 4. Memory | Conversation memory and a tool for correcting the last entry | Done: 6 of 6 conversations with the log exactly right |
 | 5. A real job | The agent moved into the `worklog` package and run as a terminal program; tests run with memory on and off | Done: 6 of 6 with memory, 2 of 6 without (4 tests really need memory) |
-| 6. Ask, don't guess | Context engineering: what the model sees. An instruction to ask instead of guessing (the model ignored it), then a check in code that refuses to save under a project the user never named | First run done (the instruction failed); revised with the check, waiting for its run |
+| 6. Ask, don't guess | Context engineering: what the model sees. An instruction to ask instead of guessing, then a check in code that refuses to save under a project the user never named | Done: the instruction was ignored (0 questions in 27 runs); with the check, 9 of 9 and 0 wrong saves |
 
 ## Setup
 

@@ -220,3 +220,19 @@ Scott ran lesson 6 as first built (ask rule only). Results, from the saved noteb
    - the closing sections were rewritten: "an instruction is a request, not a guarantee; put the rules that matter in code"
 3. **Stand-in model** changed to ignore the rule, like the real one, and to ask when a save is refused. Against it, D and E scored 9 of 9 with 0 wrong saves. These numbers are not published; Scott's rerun decides.
 4. **Next:** Scott reruns the whole notebook (Run All). Then Steps 7 and 8 are explained from the saved output, and Steps 4 to 6 are checked against it (temperature 0 should repeat the first run closely, but not necessarily exactly).
+
+### Lesson 6, rerun and published (November 23, 2026)
+
+1. **Scott reran the whole notebook.** Steps 1 to 6 repeated the first run exactly (same table, same 56 tokens), which shows the model is deterministic at temperature 0.
+2. **Results with the check:**
+
+| Setting | Passed | Wrong saves | Asked | Saves refused |
+|---|---|---|---|---|
+| B. Rule only | 5 of 9 | 4 | 0 | 0 |
+| D. Rule and check | 9 of 9 | 0 | 3 | 4 |
+| E. Rule and check, no memory | 9 of 9 | 0 | 6 | 6 |
+
+   In Step 7 the model guessed, was refused, then asked "Which project was the work on the company site for?", and saved to Cornerpost Logic once told.
+3. **Explanations rewritten from the saved run;** code cells and outputs unchanged.
+4. **Published:** lesson 6 page; the project page got lesson 6 (Done) and lesson 7 (Next) in the lesson list, a new first finding ("An instruction is a request, not a guarantee"), the lessons stat changed to "6 of 10", and an updated "What's next".
+5. **The presentation is not updated yet:** lesson 6's finding will be added with the Part 2 and 3 slides, then re-exported once.
